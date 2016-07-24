@@ -1,0 +1,630 @@
+Searching 2199 files for "E胜网"
+
+/Users/jiajin/Desktop/jay/ysc/home/bonli/action/Action.php:
+   90          $comID = HttpSession::get("companybrand_id");
+   91          if (!$comID) {
+   92:             $comID = "bl"; //标识E胜网
+   93          }
+   94
+
+/Users/jiajin/Desktop/jay/ysc/home/bonli/action/Action_Aboutus.php:
+    2  /**
+    3   +---------------------------------------<br/>
+    4:  * 控制器:关于E胜网<br/>
+    5   +---------------------------------------
+    6   * @category bonli
+    .
+   11  {
+   12      /**
+   13:      * 关于E胜网试图
+   14       */
+   15      public function aboutus()
+
+/Users/jiajin/Desktop/jay/ysc/home/bonli/action/Action_Activity.php:
+    2  /**
+    3   +---------------------------------------<br/>
+    4:  * 控制器:E胜网活动<br/>
+    5   +---------------------------------------
+    6   * @category bonli
+
+/Users/jiajin/Desktop/jay/ysc/home/bonli/action/Action_Ajax.php:
+   37  					$link=$url_base."index.php?go=bonli.member.pwdreset&code=".$code;
+   38  					$content="<div style='width:660px;line-height:20px;font-size:14px;overflow:hidden;'>"
+   39: 							."<p>欢迎使用E胜网找回密码功能。请点击以下链接重置您的密码（链接30分钟内有效） ：</p>"
+   40  							."<p><a target='_blank' href='".$link."'>".$link."</a></p>"
+   41  							."<p style='padding-top:10px'>如果点击以上链接没有反应，请将该网址复制并粘贴到新的浏览器窗口中。</p>"
+   ..
+   43  							."</div>";
+   44  					$toname=$member->realname?$member->realname:$member->username;
+   45: 					$title="E胜网 - 找回密码";
+   46: 					$result=UtilEmailer::sendEmail("E胜网",$member->email,$toname,$title,$content);
+   47  					if($result["success"]){
+   48  						//添加记录
+
+/Users/jiajin/Desktop/jay/ysc/home/bonli/action/Action_Emailvalidate.php:
+   61  		$member->update();
+   62  		$base_url=Gc::$url_base;
+   63: 			$content="<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\"><html xmlns=\"http://www.w3.org/1999/xhtml\"><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\" /><head><title>重置密码邮件</title></head><body style=\"margin: 0;padding: 0;\"><table width=\"600\" style=\"margin: 0 auto;\"><tr style=\"border-bottom: 1px solid yellow;\"><td style=\"font-size: 16px;\" width=\"400\"><img style=\"border:0;margin-bottom: 2px;\" src=\"".$base_url."home/bonli/view/default/resources/images/emailvalidate/shelllogo.png\" width=\"150\" height=\"64\"></td><td style=\"font-size: 16px; vertical-align: bottom;\" width=\"200\" style=\"text-align: right;\"><a href=\"".$base_url."index.php?go=bonli.emailvalidate.shellnewlogin\" style=\"color:red;\">壳牌专区</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href=\"".$base_url."\" style=\"color:red;\">E胜网</a></td></tr><tr><td style=\"font-size: 16px;\" colspan=\"2\"><p style=\"margin-bottom: 10px;\">尊敬的壳牌用户 <span style=\"color:red;\"> ".$username." </span>您好！</p><p style=\"margin-bottom: 10px;\">您的邮箱号码：".$email."</p><p style=\"margin-bottom: 10px;\">您密码已重置为：".$pwd."</p><p style=\"margin-bottom: 10px;\"> </p><p style=\"margin-bottom: 10px;\"></p><p style=\"margin-bottom: 10px;\"></p><p style=\"margin-bottom: 10px;\">&nbsp;</p><p style=\"margin-bottom: 10px;\">感谢您光临E胜网商城工业油会员中心，祝您购物愉快</p><p style=\"margin-bottom: 10px;\">开始购物吧：<a href=\"\" style=\"color:red;\">http://shell.bonli.cn</a></p><p style=\"margin-bottom: 10px;\">&nbsp;</p><p style=\"margin-bottom: 10px;\">此邮件为自动发送邮件，请勿回复！</p></td></tr></table></body></html>";
+   64
+   65  			return  $content;
+   ..
+   83  			$base_url=Gc::$url_base;
+   84  			$url=$base_url.'index.php?go=bonli.emailvalidate.checkemail&id='.$member_id.'&check='.$this->getEmailUrl($member_id,$email);
+   85: 			$content="<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\"><html xmlns=\"http://www.w3.org/1999/xhtml\"><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\" /><head><title>验证邮件</title></head><body style=\"margin: 0;padding: 0;\"><table width=\"600\" style=\"margin: 0 auto;\"><tr style=\"border-bottom: 1px solid yellow;\"><td style=\"font-size: 16px;\" width=\"400\"><img style=\"border:0;margin-bottom: 2px;\" src=\"".$base_url."home/bonli/view/default/resources/images/emailvalidate/shelllogo.png\" width=\"150\" height=\"64\"></td><td style=\"font-size: 16px; vertical-align: bottom;\" width=\"200\" style=\"text-align: right;\"><a href=\"".$base_url."index.php?go=bonli.emailvalidate.shellnewlogin\" style=\"color:red;\">壳牌专区</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href=\"".$base_url."\" style=\"color:red;\">E胜网</a></td></tr><tr><td style=\"font-size: 16px;\" colspan=\"2\"><p style=\"margin-bottom: 10px;\">尊敬的壳牌用户 <span style=\"color:red;\"> ".$username." </span>您好！</p><p style=\"margin-bottom: 10px;\">您的邮箱号码：".$email."  ( 激活后可以使用邮箱直接登录 )</p><p style=\"margin-bottom: 10px;\">您的初始密码：".$pwd."</p><p style=\"margin-bottom: 10px;\">请您点击下面的链接完成安全邮箱的激活</p><p style=\"margin-bottom: 10px;\"><a href=\"".$url."\">".$url."</a></p><p style=\"margin-bottom: 10px;\">(如果链接无法显示，请将它拷贝到浏览器的地址栏中)</p><p style=\"margin-bottom: 10px;\">&nbsp;</p><p style=\"margin-bottom: 10px;\">感谢您光临E胜网商城工业油会员中心，祝您购物愉快</p><p style=\"margin-bottom: 10px;\">开始购物吧：<a href=\"\" style=\"color:red;\">http://shell.bonli.cn</a></p><p style=\"margin-bottom: 10px;\">&nbsp;</p><p style=\"margin-bottom: 10px;\">此邮件为自动发送邮件，请勿回复！</p></td></tr></table></body></html>";
+   86  			return array('email'=>$email, 'username'=>$username, 'content'=>$content);
+   87  		}
+   ..
+   99
+  100  	private function sendEmail($data,$title="验证邮件"){
+  101: 		$result=UtilEmailer::sendEmail("E胜网",$data['email'],$data['username'],$title,$data['content']);
+  102  		if($result["success"]){
+  103  			$this->redirect('emailvalidate','showresult','ok='.'3');//邮件已发送,请在30分钟内收信
+
+/Users/jiajin/Desktop/jay/ysc/home/bonli/action/Action_Info.php:
+  134                  'instCode' => $InstCode, //银行编码
+  135                  'order_code' => "topuplog" . $topuplog_id, //充值记录编号
+  136:                 'product_name' => "E胜网积分充值", //商品名称
+  137                  'contact_way' => $mobile, //充值人联系方式
+  138                  'fee' => sprintf("%01.2f", $amount)   //充值金额
+
+/Users/jiajin/Desktop/jay/ysc/home/bonli/action/Action_Member.php:
+   97
+   98              $jifenlog = new Jifenlog(); //积分日志
+   99:             $jifenlog->discribe = "订单取消： E胜网积分增加";
+  100              $jifenlog->jifenraise = $order->final_amount;
+  101              $jifenlog->member_id = $merber->member_id;
+
+/Users/jiajin/Desktop/jay/ysc/home/bonli/action/Action_Product.php:
+   12
+   13      /**
+   14:      * E胜网商品详情
+   15       */
+   16      public function view() {
+
+/Users/jiajin/Desktop/jay/ysc/home/bonli/action/Action_Product1.php:
+   12
+   13      /**
+   14:      * E胜网商品详情
+   15       */
+   16      public function view() {
+
+/Users/jiajin/Desktop/jay/ysc/home/bonli/action/Action_Singlelogin.php:
+   49          $city=$data->city;//城市
+   50
+   51:         $member=Member::get_one("username='$shellcode'");//E胜网会员
+   52          $companybrand=Companybrand::get_one("cbrand_name='".Companybrand::$youjiahui."'");//企业品牌
+   53          $attr=Attr::get_one("attr_name='积分' and companybrand_id=".$companybrand->companybrand_id);//品牌属性：积分
+
+/Users/jiajin/Desktop/jay/ysc/home/bonli/action/message.php:
+    5  <html>
+    6  	<head>
+    7: 		<title>E胜网-开启积分购物之旅</title>
+    8  		<meta charset="utf-8">
+    9  	</head>
+   ..
+   39  		'name'=>'blue@ehaving.com',     //必填参数。用户账号
+   40  		'pwd'=>'5EB115D759CD8468A74033EEE4C7',     //必填参数。（web平台：基本资料中的接口密码）
+   41: 		'content'=>'您在E胜网平台验证码为：'.$verify.'，请勿将验证码提供给他人。',   //必填参数。发送内容（1-500 个汉字）UTF-8编码
+   42  		'mobile'=>$mobile,   //必填参数。手机号码。多个以英文逗号隔开
+   43  		'stime'=>'',   //可选参数。发送时间，填写时已填写的时间发送，不填时为当前时间发送
+   44: 		'sign'=>'E胜网-打造最专业的实物兑换平台',    //必填参数。用户签名。
+   45  		'type'=>'pt',  //必填参数。固定值 pt
+   46  		'extno'=>''    //可选参数，扩展码，用户定义扩展码，只能为数字
+
+/Users/jiajin/Desktop/jay/ysc/home/bonli/action/verifyEmail.php:
+    5  <html>
+    6  	<head>
+    7: 		<title>E胜网-开启积分购物之旅</title>
+    8  		<meta charset="utf-8">
+    9  	</head>
+   ..
+   44  	  $smtppass = "JIAjin456"; //SMTP服务器的用户密码
+   45  	  //邮件主题
+   46: 	  $mailsubject = "E胜网邮件验证";
+   47  	  //邮件内容
+   48: 	  $mailbody = "您在E胜网平台验证码为：{$email_rand}，请勿将验证码提供给他人。";
+   49  	  //邮件格式（HTML/TXT）,TXT为文本邮件
+   50  	  $mailtype = "TXT";
+
+/Users/jiajin/Desktop/jay/ysc/home/bonli/src/httpdata/forget.php:
+   55  		$email = $member->email;
+   56  		$username = $member->username;
+   57: 		$result=UtilEmailer::sendEmail("E胜网",$email,$username,$title,$content);
+   58  		return $result["success"];
+   59  	}
+
+/Users/jiajin/Desktop/jay/ysc/home/bonli/src/include/layout/guide/head_old.php:
+    1  <?php
+    2: //关于E胜网
+    3  $aboutuss = Aboutus::get('','aboutus_id asc');
+    4: //E胜网会员
+    5  $memberhelps = Memberhelp::get('','memberhelp_id asc');
+    6: //E胜网品牌
+    7  //$rec_brands = Btypeshow::get(array('showtype'=>1,'isshow'=>1),'sort_order desc','0,10');
+    8: //E胜网邦派
+    9  $bonpaihelps = Bonpaihelp::get(null,'bonpaihelp_id asc');
+   10: //E胜网商城
+   11  $ptypes = Ptype::get('level=1','ptype_id asc','0,12');
+   12  //商城：畅销前五名
+   ..
+  605  				<div class='mic p3' to='2'>
+  606  					<div class='micbg'></div>
+  607: 					<div class='ctop'>E胜网助手</div>
+  608  					<ul class='ccon color_black'>
+  609  ";
+
+/Users/jiajin/Desktop/jay/ysc/home/bonli/src/include/mcenter_side.tpl:
+    1  <div id="menu_side" class="inline_left menu_side">
+    2:     <div class="top_box"><a href="{$url_base}index.php?go=bonli.member.view">我的E胜网</a></div>
+    3      <div class="inner_box">
+    4          <div class="menu_box">
+
+/Users/jiajin/Desktop/jay/ysc/home/bonli/view/default/core/activity/activity.tpl:
+    8  				<div class="if1">2012年6月1日-2012年12月31日</div>
+    9  				<div class="i1"><img src="{$template_url}/resources/images/activity/p.png" class="png" /> 活动对象： </div>
+   10: 				<div class="if1">E胜网卡持卡人</div>
+   11  				<div class="i1"><img src="{$template_url}/resources/images/activity/p.png" class="png" /> 活动内容： </div>
+   12  				<div class="if1">2012年6月1日至12月31日，在热门品牌商户刷卡消费，立享5倍积分累积，让您的积分加速！</div>
+
+/Users/jiajin/Desktop/jay/ysc/home/bonli/view/default/core/auth/login.tpl:
+   72  					<div class="term_of_service">
+   73  						<input type="checkbox" value="" name="autologin" class="check_input" id="read_service" checked />
+   74: 						<span>我已阅读并接受</span><a target="_blank" href="{$url_base}index.php?go=bonli.helpcenter.view&id=34">《E胜网服务条款》</a>
+   75  					</div>
+   76  				</form>
+
+/Users/jiajin/Desktop/jay/ysc/home/bonli/view/default/core/auth/register.tpl:
+   44  					<label id="is_read1">
+   45  						<input type="checkbox" value="1" name="agreement" id="agreement_submit1">我已看过并接受
+   46: 						<a style="color:red;">《E胜网服务条款》</a>
+   47  					</label>
+   48  				</div>
+
+/Users/jiajin/Desktop/jay/ysc/home/bonli/view/default/core/bonpaihelp/view.tpl:
+    5  		<div class="box bdcolor_gray">
+    6  			<div class="bt bdcolor_gray">
+    7: 				<div class="c bgcolor_gray">E胜网社区</div>
+    8  				<div class="ico ico_dajiantou"></div>
+    9  			</div>
+
+/Users/jiajin/Desktop/jay/ysc/home/bonli/view/default/core/companybrand/shellwinter.tpl:
+    3  	<head>
+    4  		<meta http-equiv="Content-Type" content="text/html; charset={$encoding}" />
+    5: 		<title>E胜网-中国最大的会员电子商务网站！要兑礼，上E胜网</title>
+    6  		<meta name="keywords" content="礼品、 会议礼品、工艺品、商务礼品、市场促销、员工福利、收藏品、健康食品、端午节礼品、建军节礼品、中秋节、国庆节、元旦、春节、纪念礼品、外事礼品、尊贵礼品、商务礼品、特色礼品、冬季保暖、防暑降温、困难补助、劳防用品、特殊慰问、换购产品、乳品、早餐、米、油、饮品、鲜果、健身、健身器材、保健仪器、旅游、体检、休闲娱乐、运动、高效办公、温馨办公、学习系列、员工奖励、企业团购、进口商品、幸福农场、商务定制、主题定制、礼品兑换"/>
+    7: 		<meta name="description" content="E胜网-中国最大的会员电子商务网站 节日福利礼品、食品类、家居厨具类、电器类、保健娱乐类、票券类、礼品类、办公文教类、美容护理类、药材类、儿童用品类、服装类、礼品卡、提货券、商务定制、礼品兑换"/>
+    8  		<meta http-equiv="cache-control" content="no-cache" />
+    9  		<meta http-equiv="x-ua-compatible" content="ie=7" />
+
+/Users/jiajin/Desktop/jay/ysc/home/bonli/view/default/core/customize/lists.tpl:
+   31  					<span class="highlight_words">用自己企业的商标、名称，</span>
+   32  					有新意，气派之余，还可以节约费用。<br />
+   33: 					<span class="firstline">E胜网公司拥有强大创意与美术设计团队，能为呵护提供全面而周到的个性化服务。</span>
+   34  				</div>
+   35  				<a href="{$url_base}index.php?go=bonli.customize.lists#customize"><img id="custom_btn" name="business_custom" src="{$template_url}/resources/images/business_custom/custom_btn.jpg"/></a>
+
+/Users/jiajin/Desktop/jay/ysc/home/bonli/view/default/core/magazine/lists.tpl:
+   11  					<li><a href="{$url_base}index.php?go=bonli.index.index">首页</a></li>
+   12  					<li>&gt;</li>
+   13: 					<li>E胜网杂志</li>
+   14  				</ul>
+   15  			</div>
+   ..
+   36  					<img src="{$url_base}upload/images/{$magazine.ico}" class="download_item_img border_color"/>
+   37  					<div class="download_item_order">{$magazine.magazineno}</div>
+   38: 					<div class="download_item_name">《E胜网杂志》</div>
+   39  					<a href="{$url_base}upload/pdf/{$magazine.downloadUrl}"><img src="{$template_url}resources/images/magazine/download.jpg" class="download_item_download"/></a>
+   40  				</li>
+
+/Users/jiajin/Desktop/jay/ysc/home/bonli/view/default/core/mall/view.tpl:
+   13  		<li><a href="{$url_base}index.php?go=bonli.index.index">首页</a></li>
+   14  		<li>&#8250;</li>
+   15: 		<li>E胜网商城</li>
+   16  	</ul>
+   17  	<form id="keyword_to_search" action="{$url_base}index.php" method="get" target="_blank">
+
+/Users/jiajin/Desktop/jay/ysc/home/bonli/view/default/core/mall/view2.tpl:
+    6  <html lang="zh-CN" xml:lang="zh-CN" xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    7
+    8: 		<title>E胜网-中国最大的会员电子商务网站！要兑礼，上E胜网</title>
+    9  		<meta name="keywords" content="礼品、 会议礼品、工艺品、商务礼品、市场促销、员工福利、收藏品、健康食品、端午节礼品、建军节礼品、中秋节、国庆节、元旦、春节、纪念礼品、外事礼品、尊贵礼品、商务礼品、特色礼品、冬季保暖、防暑降温、困难补助、劳防用品、特殊慰问、换购产品、乳品、早餐、米、油、饮品、鲜果、健身、健身器材、保健仪器、旅游、体检、休闲娱乐、运动、高效办公、温馨办公、学习系列、员工奖励、企业团购、进口商品、幸福农场、商务定制、主题定制、礼品兑换">
+   10: 		<meta name="description" content="E胜网-中国最大的会员电子商务网站 节日福利礼品、食品类、家居厨具类、电器类、保健娱乐类、票券类、礼品类、办公文教类、美容护理类、药材类、儿童用品类、服装类、礼品卡、提货券、商务定制、礼品兑换">
+   11  		<meta http-equiv="cache-control" content="no-cache">
+   12  		<meta http-equiv="x-ua-compatible" content="ie=7">
+
+/Users/jiajin/Desktop/jay/ysc/home/bonli/view/default/core/member/activate.tpl:
+    8  		}
+    9  		var m=new MessageBox("欢迎"
+   10: 							,"持有E胜网卡会员可以通过'卡号绑定'方式升级为特卡会员。"
+   11  							,MessageBox.ok
+   12  							,"{$template_url}resources");
+
+/Users/jiajin/Desktop/jay/ysc/home/bonli/view/default/core/member/collect.tpl:
+   46                          <table>
+   47                              <th>商品名称</th>
+   48:                             <th>E胜网价</th>
+   49                              <th>是否有货</th>
+   50                              <th>操作</th>
+
+/Users/jiajin/Desktop/jay/ysc/home/bonli/view/default/core/member/info.tpl:
+    7  		}
+    8  		var m=new MessageBox("欢迎"
+    9: 			,"<div align='center' style='line-height: 1.5em;'><br/>欢迎您成为E胜网会员！赶紧来完善您的资料吧！</div>"
+   10  			,MessageBox.ok
+   11  			,"{$template_url}resources");
+   ..
+   44  						<td id="extend_field4i" align="right">家庭地址</td>
+   45  						<td>
+   46: 							<input class="inputBg" name="address" size="25" type="text" value="{$member.address}" id="address"/>&nbsp;&nbsp;&#40;E胜网团购为您发放生日礼品需要&#41;
+   47  						</td>
+   48  					</tr>
+
+/Users/jiajin/Desktop/jay/ysc/home/bonli/view/default/core/member/integral.tpl:
+   37                                      <div class="integral_top_right_jifen th">平台积分</div>
+   38                                      <div class="integral_top_right_bonli th">相当于积分</div>
+   39:                                     <!-- <div class="integral_top_right_bj th"><span>积分比值</span><span>(E胜网：平台)</span></div> -->
+   40                                  </li>
+   41                                  {foreach item=data from=$memberattr}
+
+/Users/jiajin/Desktop/jay/ysc/home/bonli/view/default/core/member/recharge.tpl:
+   10                      <div class="recharge_cent_left_cent_main">
+   11                          <ul>
+   12:                             <li><span>1、</span><div class="recharge_cent_left_cent_main_txt">登录E胜网账号</div></li>
+   13                              <li><span>2、</span><div class="recharge_cent_left_cent_main_txt">选择充值金额</div></li>
+   14                              <li><span>3、</span><div class="recharge_cent_left_cent_main_txt">选择支付方式</div></li>
+   ..
+   16                              <li><span>5、</span><div class="recharge_cent_left_cent_main_txt">充值成功</div></li>
+   17                          </ul>
+   18:                         <div class="thou">满千送百活动规则：<br />在4月1日~6日期间<br />充值可享：<br />充1000积分送100积分，充的越多返的越多。返的积分将在2014年4月13日以前陆续返还到会员账户。本次活动最终解释权归E胜网所有。
+   19                          </div>
+   20                      </div>
+
+/Users/jiajin/Desktop/jay/ysc/home/bonli/view/default/core/member/safety.tpl:
+   77                                  <div class="safety_main_cen">
+   78                                      <div class="safety_main_tile">登录密码</div>
+   79:                                     <div class="safety_main_wz">您登录的是E胜网账号，请保护好您的账号密码。</div>
+   80                                      <div class="safety_main_bnt"><a href="{$url_base}index.php?go=bonli.member.updatepass"><font color="#0069D5">修改</a></a></div>
+   81                                  </div>
+
+/Users/jiajin/Desktop/jay/ysc/home/bonli/view/default/core/member/seeproduct.tpl:
+   30  					<tr class="tbl_head">
+   31  						<td>商品名称</td>
+   32: 						<td width="100">E胜网价</td>
+   33  						<td width="100">积分</td>
+   34  						<td width="100">操作</td>
+
+/Users/jiajin/Desktop/jay/ysc/home/bonli/view/default/core/member/view.tpl-sxflgl:
+    9
+   10      var m = new MessageBox("欢迎"
+   11:         , "<div align='center' style='line-height: 1.5em;'>欢迎您成为E胜网会员！赶紧来完善您的资料吧！</div>"
+   12          , MessageBox.ok
+   13          , "{$template_url}resources");
+   ..
+   46              <div id="member_details">
+   47                <div id="member_nickname">
+   48:                   <span class="hui_color member_font">{$member.realname|default:$member.username}</span>，欢迎来到E胜网!<!-- 企业用户：{if $company.com_name==""||$company.com_name==" "}[<a href="index.php?go=bonli.member.info" class="hong_color">未填写</a>]
+   49                  {else}{$company.com_name}{/if} -->
+   50                    </div>
+   ..
+   83                        <!-- <div class='m_d_zhuanhuan'>
+   84                          <div class='m_d_line'>
+   85:                           <div class='d_c_name'>E胜网X积分:&nbsp;213.00</div>
+   86:                           <div class='d_c_jifen'>可转换E胜网&nbsp;<span class='hong_color'>20</span>&nbsp;积分</div>
+   87                            <a class='d_c_btn'></a>
+   88                          </div>
+   89                          <div class='m_d_line'>
+   90                            <div class='d_c_name'>招商银行积分:&nbsp;51.00</div>
+   91:                           <div class='d_c_jifen'>可转换E胜网&nbsp;<span class='hong_color'>39</span>&nbsp;积分</div>
+   92                            <a class='d_c_btn'></a>
+   93                          </div>
+
+/Users/jiajin/Desktop/jay/ysc/home/bonli/view/default/core/product/view.tpl:
+  202                          </div>
+  203                      {/if}
+  204:                 <!--     <div style="font-size:14px;line-height:30px"> <font  style="color:red;">[公告]</font> 尊敬的会员：北京世锦赛及大阅兵将在8月17日至10月3日进行，在此期间，华北区受到交通限行影响，您在E胜网商城订购的商品可能会有延误。如出现延误，请您耐心等待，我们将尽快为您送达！感谢您对E胜网商城的支持与厚爱！</div> -->
+  205                  </div>
+  206                  <div class="product_detal">
+
+/Users/jiajin/Desktop/jay/ysc/home/bonli/view/default/core/product/view_old.tpl:
+  340                                  <tr>
+  341                                      <td class="product_price">市场价：<del>￥{$product.market_price}</del></td>
+  342:                                     <td class="product_price"><!-- E胜网价：<span>￥{$product.price}</span> --></td>
+  343                                  </tr>
+  344                              </table>
+
+/Users/jiajin/Desktop/jay/ysc/home/bonli/view/default/js/item.js:
+    1: //从cookiE胜网到json
+    2  function getCookieJson(name){
+    3  	var json;
+
+/Users/jiajin/Desktop/jay/ysc/home/bonli/view/default/js/jquery.cart.js:
+  144  				 * param: string goods_id 货品ID
+  145  				 * param: int num 加入数量
+  146: 				 * param: string com_id 企业品牌ID,E胜网为"bl"
+  147  				 */
+  148  				addToCart:function(goods_id,num,com_id){
+
+/Users/jiajin/Desktop/jay/ysc/home/bonli/view/default/layout/home/head_menu2016.5.9备份.tpl:
+   17          <div class='mibg bg3 png nav_mi' to='dingzhi'>
+   18            <a target='_blank' href='{$url_base}index.php?go=bonli.groupbuy.lists'>
+   19:             E胜网团购
+   20            </a>
+   21          </div>
+   22          <div class='mibg bg4 png nav_mi' to='pinpai'>
+   23            <a target='_blank' href='{$url_base}index.php?go=bonli.bonpaihelp.view&id=1'>
+   24:             E胜网社区
+   25            </a>
+   26          </div>
+
+/Users/jiajin/Desktop/jay/ysc/home/bonli/view/default/layout/member/mcenter_side.tpl:
+    1  <div id="menu_side" class="inline_left menu_side">
+    2:     <div class="top_box"><a href="{$url_base}index.php?go=bonli.member.view">我的E胜网</a></div>
+    3      <div class="inner_box">
+    4          <div class="menu_box">
+
+/Users/jiajin/Desktop/jay/ysc/home/bonli/view/default/resources/css/item.css:
+   79  .msg_submit_able{cursor:default;background: url("images/item/submit_comment.jpg") repeat scroll 0 0 transparent;}
+   80  .left_side_content{width:765px;float:left;margin-left:10px;_margin-left:10px;}
+   81: /*E胜网显示*/
+   82  .logoshow{padding-top:10px;background:#fff;}
+   83
+
+/Users/jiajin/Desktop/jay/ysc/home/bonli/view/default/resources/css/new_index.css:
+   89  #navw .nav .mbar_upr .c{margin:0px 0px 8px 0px;overflow:hidden;}
+   90  #navw .nav .mbar_upr .c img{width:90px;height:38px;}
+   91: /*E胜网商城下拉菜单*/
+   92  #navw .nav .mbar_up_{width:342px;padding:15px 0px 15px 40px;overflow:hidden;}
+   93  #navw .nav .mbar_up_ .mbar_upl{width:300px;padding:0px 0px 0px 15px;float:left;white-space:nowrap;overflow:hidden;}
+
+/Users/jiajin/Desktop/jay/ysc/home/bonli/view/default/resources/doc/aftersale_service.txt:
+    1  <b>一、服务承诺</b>
+    2: 　　 1、E胜网商城的商品均为正品。为保障您的权益，请会员付款后即与配送人员当面核对商品的种类、数量、规格、赠品、金额等是否与订单一致，确认无误后再进行签收。您对商品进行签收后，将不再接受以上问题的投诉。谢谢配合！
+    3:  　　2、E胜网商城严格遵循国家“三包”法规，如符合以下条件，自顾客收到商品起7日内可退货，8日至15日内可换货：
+    4  　　 A、商品出现国家“三包”法规中所规定的非人为质量问题；
+    5  　　 B、在7日内（退货）或15日内（换货）至生产厂商的售后服务中心开具证明商品有质量问题的检测报告（如售后服务中心无法提供检测报告，则需提供商品检测或故障单）；
+    .
+   13  　　 2、运费说明：
+   14   　　自顾客收到商品起7日内因质量问题退货，如通过快递寄回商品而产生的运费由厂家承担（不承担保价费用）；因无质量问题换货而产生的所有运费由会员自行承担。
+   15: 　　 3、以下情况E胜网商城恕不提供退换货服务：
+   16: 　　 A、任何非由E胜网商城出售的商品（订单号不符合）；
+   17   　　B、超过国家“三包”法规中规定的退换货的有效期；
+   18   　　C、商品已使用（有质量问题除外）或为正常使用磨损；
+   ..
+   23   　　4、售后部门在收到顾客寄回的商品起15个工作日之内完成退换货申请的处理。
+   24   　　5、自顾客收到商品起15日以上如商品出现质量问题，为了不耽误顾客使用，缩短故障商品的维修时间，我们建议您直接联系生产厂商在当地的售后服务网点进行处理。您可以通过在商品的保修卡中查找、拨打厂商顾客服务热线咨询或访问厂商官方网站等方式以获得售后服务网点信息。
+   25:  　　6、在不违反国家“三包”法规的前提下，E胜网商城对商品退换原则保留最终解释权。
+   26
+   27  <b>三、特殊商品保修条款</b>
+   28  　　 1、 手机、数码相机、数码摄像机、台式机电脑、笔记本电脑、家用电器、显示器、打印机、扫描仪、一体机、GPS导航仪类商品
+   29: 　　 A、 如需E胜网商城代为送至厂商售后服务中心检测，请顾客将整套商品（包括所有标配配件）、保修凭证和购买发票复印件【Motorola摩托罗拉手机、Sony Ericsson索尼爱立信手机、Sharp夏普手机、LG手机、Canon佳能相机、Nikon尼康相机需要寄回发票原件；Nokia诺基亚手机在收到货15日内如需检测，需附上购买者本人身份证正反面复印件（超过15日的维修则不需要），否则厂商售后服务中心不予受理】寄至E胜网商城。
+   30   　　B、 台式机电脑、家用电器、显示器、打印机、扫描仪、一体机、GPS导航仪等商品，如厂商的保修条款中提供上门售后服务，可直接致电厂商800顾客服务热线，厂商售后服务中心可以免费上门进行检测和维修。
+   31   　　2、 化妆品、洗化用品、护肤品、个人护理用品类商品
+   32:  　　A、购买化妆品、洗化用品、护肤品、个人护理用品请当场验收，若商品存在外包装破损、缺少、渗漏等问题，顾客应在快递单据上注明，并立即与E胜网商城客服联系。
+   33  　　 B、 化妆品、洗化用品、护肤用品及个人护理用品，如无质量问题，不可退换。
+   34: 　　 C、 因商品保质期即将到期等原因而进行促销清仓的商品，不予退换，E胜网商城将在商品页面标明商品情况，此类商品建议顾客谨慎购买。
+   35   　　D、 因个人喜好（如外观、色泽、气味等）或不适合个人发质、肤质等理由要求退换货的，不予处理。
+   36: 　　 E、 顾客对商品质量表示置疑，要求退换货的，请提供当地质检部门出具的书面鉴定。若商品确实存在质量问题，E胜网商城将提供退换货服务。
+   37  　　 3、食品类商品
+   38: 　　 A、为保证食品安全，请顾客在签收此类商品时仔细查验，当场验收。若商品存在外包装破损、缺少、变质等问题，应在快递单据上注明，并立即与E胜网商城客服联系。
+   39  　　 B、食品类商品，如无质量问题，不可退换。
+   40   　　C、经合法食品检验机构检验，确属于不符合食品安全标准的食品，予以退换货。
+   ..
+   43  <b>四、退换货流程</b>
+   44  　　 1、如果您需要办理退换货，可通过以下方式进行办理：
+   45:  　　2、网站自助服务：可以更换商品的颜色或尺码，如需办理，可登录“E胜网-我的订单”直接办理。
+   46   　　3、客服电话：400-800-3217
+   47   　　详细流程请查看 退换货申请
+
+/Users/jiajin/Desktop/jay/ysc/home/bonli/view/default/resources/doc/how_to_buy.txt:
+    1
+    2:  E胜网购物为大宗商品团购模式
+    3
+    4
+    5   团购方式
+    6:  第一步 进入E胜网团购网查找自己喜欢的商品
+    7   第二步 在您喜欢的商品页面中选择商品型号、尺寸以及填写购买数量，然后点击“购买”按钮。
+    8   第三步 提交订单
+
+/Users/jiajin/Desktop/jay/ysc/home/bonli/view/default/tmp/templates_c/031cd74d234c5c597ed9770f1c80ce1fc7428921.file.view.tpl.php:
+  303                          </div>
+  304                      <?php }?>
+  305:                 <!--     <div style="font-size:14px;line-height:30px"> <font  style="color:red;">[公告]</font> 尊敬的会员：北京世锦赛及大阅兵将在8月17日至10月3日进行，在此期间，华北区受到交通限行影响，您在E胜网商城订购的商品可能会有延误。如出现延误，请您耐心等待，我们将尽快为您送达！感谢您对E胜网商城的支持与厚爱！</div> -->
+  306                  </div>
+  307                  <div class="product_detal">
+
+/Users/jiajin/Desktop/jay/ysc/home/bonli/view/default/tmp/templates_c/15d2894e402c84839bb7e8d0b25c4375ad7983ab.file.integral.tpl.php:
+   94                                      <div class="integral_top_right_jifen th">平台积分</div>
+   95                                      <div class="integral_top_right_bonli th">相当于积分</div>
+   96:                                     <!-- <div class="integral_top_right_bj th"><span>积分比值</span><span>(E胜网：平台)</span></div> -->
+   97                                  </li>
+   98                                  <?php  $_smarty_tpl->tpl_vars['data'] = new Smarty_Variable;
+
+/Users/jiajin/Desktop/jay/ysc/home/bonli/view/default/tmp/templates_c/1a9f4fdfd0e16f7b7f95ee6ab8259aa1eb040af8.file.login.tpl.php:
+  124  						<input type="checkbox" value="" name="autologin" class="check_input" id="read_service" checked />
+  125  						<span>我已阅读并接受</span><a target="_blank" href="<?php echo $_smarty_tpl->getVariable('url_base')->value;?>
+  126: index.php?go=bonli.helpcenter.view&id=34">《E胜网服务条款》</a>
+  127  					</div>
+  128  				</form>
+
+/Users/jiajin/Desktop/jay/ysc/home/bonli/view/default/tmp/templates_c/20ef04fb606fc27ef2fd75166dd526637c5a8c1a.file.mcenter_side.tpl.php:
+   20  <div id="menu_side" class="inline_left menu_side">
+   21      <div class="top_box"><a href="<?php echo $_smarty_tpl->getVariable('url_base')->value;?>
+   22: index.php?go=bonli.member.view">我的E胜网</a></div>
+   23      <div class="inner_box">
+   24          <div class="menu_box">
+
+/Users/jiajin/Desktop/jay/ysc/home/bonli/view/default/tmp/templates_c/44c4a09618479e65ded2ef4fac255a3c833e9cda.file.login.tpl.php:
+  124  						<input type="checkbox" value="" name="autologin" class="check_input" id="read_service" checked />
+  125  						<span>我已阅读并接受</span><a target="_blank" href="<?php echo $_smarty_tpl->getVariable('url_base')->value;?>
+  126: index.php?go=bonli.helpcenter.view&id=34">《E胜网服务条款》</a>
+  127  					</div>
+  128  				</form>
+
+/Users/jiajin/Desktop/jay/ysc/home/bonli/view/default/tmp/templates_c/5b61f37996519bceee8f9e477d307be6ca0273a9.file.head_meta.tpl.php:
+   20  <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $_smarty_tpl->getVariable('encoding')->value;?>
+   21  " />
+   22: <title>E胜网-开启积分购物之旅</title>
+   23  <meta name="keywords" content="礼品、 会议礼品、工艺品、商务礼品、市场促销、员工福利、收藏品、健康食品、端午节礼品、建军节礼品、中秋节、国庆节、元旦、春节、纪念礼品、外事礼品、尊贵礼品、商务礼品、特色礼品、冬季保暖、防暑降温、困难补助、劳防用品、特殊慰问、换购产品、乳品、早餐、米、油、饮品、鲜果、健身、健身器材、保健仪器、旅游、体检、休闲娱乐、运动、高效办公、温馨办公、学习系列、员工奖励、企业团购、进口商品、幸福农场、商务定制、主题定制、礼品兑换"/>
+   24: <meta name="description" content="E胜网-开启积分购物之旅 节日福利礼品、食品类、家居厨具类、电器类、保健娱乐类、票券类、礼品类、办公文教类、美容护理类、药材类、儿童用品类、服装类、礼品卡、提货券、商务定制、礼品兑换"/>
+   25  <META HTTP-EQUIV="Cache-Control" CONTENT="no-cache,no-store, must-revalidate">
+   26  <META HTTP-EQUIV="pragma" CONTENT="no-cache">
+
+/Users/jiajin/Desktop/jay/ysc/home/bonli/view/default/tmp/templates_c/5ec56919fd4b2601a21c1c0b2beb1558b8f2addb.file.safety.tpl.php:
+  144                                  <div class="safety_main_cen">
+  145                                      <div class="safety_main_tile">登录密码</div>
+  146:                                     <div class="safety_main_wz">您登录的是E胜网账号，请保护好您的账号密码。</div>
+  147                                      <div class="safety_main_bnt"><a href="<?php echo $_smarty_tpl->getVariable('url_base')->value;?>
+  148  index.php?go=bonli.member.updatepass"><font color="#0069D5">修改</a></a></div>
+
+/Users/jiajin/Desktop/jay/ysc/home/bonli/view/default/tmp/templates_c/707feb170a57e299a518b4240e39cd55c400e0e5.file.view.tpl.php:
+  303                          </div>
+  304                      <?php }?>
+  305:                 <!--     <div style="font-size:14px;line-height:30px"> <font  style="color:red;">[公告]</font> 尊敬的会员：北京世锦赛及大阅兵将在8月17日至10月3日进行，在此期间，华北区受到交通限行影响，您在E胜网商城订购的商品可能会有延误。如出现延误，请您耐心等待，我们将尽快为您送达！感谢您对E胜网商城的支持与厚爱！</div> -->
+  306                  </div>
+  307                  <div class="product_detal">
+
+/Users/jiajin/Desktop/jay/ysc/home/bonli/view/default/tmp/templates_c/75c3f148cc0b6baccaeb11c4eaf47eb410bbe4ba.file.header_top.tpl.php:
+   75                  </div>
+   76              <?php }else{ ?>
+   77: 				<div class="">&nbsp;<a >欢迎来到E胜网</a>&nbsp;</div>
+   78                  <div class="">&nbsp;<a href='<?php echo $_smarty_tpl->getVariable('url_base')->value;?>
+   79  index.php?go=bonli.auth.login'>登录</a>&nbsp;</div>
+
+/Users/jiajin/Desktop/jay/ysc/home/bonli/view/default/tmp/templates_c/7a41b4d337c6d87e06310a5b806c7801ec2e7bba.file.header_top.tpl.php:
+   75                  </div>
+   76              <?php }else{ ?>
+   77: 				<div class="">&nbsp;<a >欢迎来到E胜网</a>&nbsp;</div>
+   78                  <div class="">&nbsp;<a href='<?php echo $_smarty_tpl->getVariable('url_base')->value;?>
+   79  index.php?go=bonli.auth.login'>登录</a>&nbsp;</div>
+
+/Users/jiajin/Desktop/jay/ysc/home/bonli/view/default/tmp/templates_c/816639718b53932a6c1770b019f0c5707b159dae.file.safety.tpl.php:
+  144                                  <div class="safety_main_cen">
+  145                                      <div class="safety_main_tile">登录密码</div>
+  146:                                     <div class="safety_main_wz">您登录的是E胜网账号，请保护好您的账号密码。</div>
+  147                                      <div class="safety_main_bnt"><a href="<?php echo $_smarty_tpl->getVariable('url_base')->value;?>
+  148  index.php?go=bonli.member.updatepass"><font color="#0069D5">修改</a></a></div>
+
+/Users/jiajin/Desktop/jay/ysc/home/bonli/view/default/tmp/templates_c/833d635d49d6ead03b93f04d13c05b42bfeea2f5.file.view.tpl.php:
+   55
+   56      var m = new MessageBox("欢迎"
+   57:         , "<div align='center' style='line-height: 1.5em;'>欢迎您成为E胜网会员！赶紧来完善您的资料吧！</div>"
+   58          , MessageBox.ok
+   59          , "<?php echo $_smarty_tpl->getVariable('template_url')->value;?>
+   ..
+   98                <div id="member_nickname">
+   99                    <span class="hui_color member_font"><?php echo (($tmp = @$_smarty_tpl->getVariable('member')->value['realname'])===null||$tmp==='' ? $_smarty_tpl->getVariable('member')->value['username'] : $tmp);?>
+  100: </span>，欢迎来到E胜网!<!-- 企业用户：<?php if ($_smarty_tpl->getVariable('company')->value['com_name']==''||$_smarty_tpl->getVariable('company')->value['com_name']==" "){?>[<a href="index.php?go=bonli.member.info" class="hong_color">未填写</a>]
+  101                  <?php }else{ ?><?php echo $_smarty_tpl->getVariable('company')->value['com_name'];?>
+  102  <?php }?> -->
+  ...
+  148                        <!-- <div class='m_d_zhuanhuan'>
+  149                          <div class='m_d_line'>
+  150:                           <div class='d_c_name'>E胜网X积分:&nbsp;213.00</div>
+  151:                           <div class='d_c_jifen'>可转换E胜网&nbsp;<span class='hong_color'>20</span>&nbsp;积分</div>
+  152                            <a class='d_c_btn'></a>
+  153                          </div>
+  154                          <div class='m_d_line'>
+  155                            <div class='d_c_name'>招商银行积分:&nbsp;51.00</div>
+  156:                           <div class='d_c_jifen'>可转换E胜网&nbsp;<span class='hong_color'>39</span>&nbsp;积分</div>
+  157                            <a class='d_c_btn'></a>
+  158                          </div>
+
+/Users/jiajin/Desktop/jay/ysc/home/bonli/view/default/tmp/templates_c/8741ebaf8e6487637ca2493479a7c84ccf5a4a61.file.navbar.tpl.php:
+   23  <li>&nbsp;&gt;&nbsp;</li>
+   24  <li><a href="<?php echo $_smarty_tpl->getVariable('base_url')->value;?>
+   25: index.php?go=bonli.member.view">我的E胜网</a></li>
+   26  <?php  $_smarty_tpl->tpl_vars['nav'] = new Smarty_Variable;
+   27   $_smarty_tpl->tpl_vars['index'] = new Smarty_Variable;
+
+/Users/jiajin/Desktop/jay/ysc/home/bonli/view/default/tmp/templates_c/8e3c3301b6726661cc38dd9cd09b11e5ba357cd3.file.view.tpl.php:
+  303                          </div>
+  304                      <?php }?>
+  305:                 <!--     <div style="font-size:14px;line-height:30px"> <font  style="color:red;">[公告]</font> 尊敬的会员：北京世锦赛及大阅兵将在8月17日至10月3日进行，在此期间，华北区受到交通限行影响，您在E胜网商城订购的商品可能会有延误。如出现延误，请您耐心等待，我们将尽快为您送达！感谢您对E胜网商城的支持与厚爱！</div> -->
+  306                  </div>
+  307                  <div class="product_detal">
+
+/Users/jiajin/Desktop/jay/ysc/home/bonli/view/default/tmp/templates_c/9425980c19225349cb480bb5de2b3a69d7021602.file.head_meta.tpl.php:
+   20  <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $_smarty_tpl->getVariable('encoding')->value;?>
+   21  " />
+   22: <title>E胜网-开启积分购物之旅</title>
+   23  <meta name="keywords" content="礼品、 会议礼品、工艺品、商务礼品、市场促销、员工福利、收藏品、健康食品、端午节礼品、建军节礼品、中秋节、国庆节、元旦、春节、纪念礼品、外事礼品、尊贵礼品、商务礼品、特色礼品、冬季保暖、防暑降温、困难补助、劳防用品、特殊慰问、换购产品、乳品、早餐、米、油、饮品、鲜果、健身、健身器材、保健仪器、旅游、体检、休闲娱乐、运动、高效办公、温馨办公、学习系列、员工奖励、企业团购、进口商品、幸福农场、商务定制、主题定制、礼品兑换"/>
+   24: <meta name="description" content="E胜网-开启积分购物之旅 节日福利礼品、食品类、家居厨具类、电器类、保健娱乐类、票券类、礼品类、办公文教类、美容护理类、药材类、儿童用品类、服装类、礼品卡、提货券、商务定制、礼品兑换"/>
+   25  <META HTTP-EQUIV="Cache-Control" CONTENT="no-cache,no-store, must-revalidate">
+   26  <META HTTP-EQUIV="pragma" CONTENT="no-cache">
+
+/Users/jiajin/Desktop/jay/ysc/home/bonli/view/default/tmp/templates_c/9e4c7676106546a916b591e42afaa4f2cd615d70.file.lists.tpl.php:
+   51      <div class="cart_null">
+   52          <div class="con_txt">
+   53:             <p>您的E胜网购物车还是空的。</p>
+   54              <p>您可以 <?php if (!$_SESSION['member_id']){?><a href="<?php echo $_smarty_tpl->getVariable('url_base')->value;?>
+   55  index.php?go=bonli.auth.login">[登录]</a> 购物车，查看之前加入的商品，或者<?php }?><a href="<?php echo $_smarty_tpl->getVariable('url_base')->value;?>
+
+/Users/jiajin/Desktop/jay/ysc/home/bonli/view/default/tmp/templates_c/adae5135dc2045e6b357139b56d17e1d02bed389.file.mcenter_side.tpl.php:
+   20  <div id="menu_side" class="inline_left menu_side">
+   21      <div class="top_box"><a href="<?php echo $_smarty_tpl->getVariable('url_base')->value;?>
+   22: index.php?go=bonli.member.view">我的E胜网</a></div>
+   23      <div class="inner_box">
+   24          <div class="menu_box">
+
+/Users/jiajin/Desktop/jay/ysc/home/bonli/view/default/tmp/templates_c/ae723b2ff87655c6c96e269d14f9a1538877867c.file.login.tpl.php:
+  124  						<input type="checkbox" value="" name="autologin" class="check_input" id="read_service" checked />
+  125  						<span>我已阅读并接受</span><a target="_blank" href="<?php echo $_smarty_tpl->getVariable('url_base')->value;?>
+  126: index.php?go=bonli.helpcenter.view&id=34">《E胜网服务条款》</a>
+  127  					</div>
+  128  				</form>
+
+/Users/jiajin/Desktop/jay/ysc/home/bonli/view/default/tmp/templates_c/b2f1c92ef7a1ff7351566e2051f687b0da45e6dd.file.header_top.tpl.php:
+   75                  </div>
+   76              <?php }else{ ?>
+   77: 				<div class="">&nbsp;<a >欢迎来到E胜网</a>&nbsp;</div>
+   78                  <div class="">&nbsp;<a href='<?php echo $_smarty_tpl->getVariable('url_base')->value;?>
+   79  index.php?go=bonli.auth.login'>登录</a>&nbsp;</div>
+
+/Users/jiajin/Desktop/jay/ysc/home/bonli/view/default/tmp/templates_c/c4b1a16f9d7851ac9979eb10382cba3e93896fb3.file.collect.tpl.php:
+  111                          <table>
+  112                              <th>商品名称</th>
+  113:                             <th>E胜网价</th>
+  114                              <th>是否有货</th>
+  115                              <th>操作</th>
+
+/Users/jiajin/Desktop/jay/ysc/home/bonli/view/default/tmp/templates_c/c4cf8a4c53ae97759c50480149184595b57c431b.file.lists.tpl.php:
+   51      <div class="cart_null">
+   52          <div class="con_txt">
+   53:             <p>您的E胜网购物车还是空的。</p>
+   54              <p>您可以 <?php if (!$_SESSION['member_id']){?><a href="<?php echo $_smarty_tpl->getVariable('url_base')->value;?>
+   55  index.php?go=bonli.auth.login">[登录]</a> 购物车，查看之前加入的商品，或者<?php }?><a href="<?php echo $_smarty_tpl->getVariable('url_base')->value;?>
+
+/Users/jiajin/Desktop/jay/ysc/home/bonli/view/default/tmp/templates_c/d59d8105a76a16c2de4e2e3814d79e7b9043fb37.file.head_meta.tpl.php:
+   20  <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $_smarty_tpl->getVariable('encoding')->value;?>
+   21  " />
+   22: <title>E胜网-开启积分购物之旅</title>
+   23  <meta name="keywords" content="礼品、 会议礼品、工艺品、商务礼品、市场促销、员工福利、收藏品、健康食品、端午节礼品、建军节礼品、中秋节、国庆节、元旦、春节、纪念礼品、外事礼品、尊贵礼品、商务礼品、特色礼品、冬季保暖、防暑降温、困难补助、劳防用品、特殊慰问、换购产品、乳品、早餐、米、油、饮品、鲜果、健身、健身器材、保健仪器、旅游、体检、休闲娱乐、运动、高效办公、温馨办公、学习系列、员工奖励、企业团购、进口商品、幸福农场、商务定制、主题定制、礼品兑换"/>
+   24: <meta name="description" content="E胜网-开启积分购物之旅 节日福利礼品、食品类、家居厨具类、电器类、保健娱乐类、票券类、礼品类、办公文教类、美容护理类、药材类、儿童用品类、服装类、礼品卡、提货券、商务定制、礼品兑换"/>
+   25  <META HTTP-EQUIV="Cache-Control" CONTENT="no-cache,no-store, must-revalidate">
+   26  <META HTTP-EQUIV="pragma" CONTENT="no-cache">
+
+/Users/jiajin/Desktop/jay/ysc/home/bonli/view/default/tmp/templates_c/e609be40005a33b5b74229e1f94f398d100cfa10.file.order_detail.tpl.php:
+  118                  </div>
+  119                  <div class="state_summary">
+  120:                     <span>配送方式：&nbsp;</span><span class="color_normal">E胜网快递</span>
+  121                  </div>
+  122                  <div class="state_summary">
+  123:                     <span>物流信息：&nbsp;</span><span class="color_normal">E胜网物流</span>
+  124                  </div>
+  125                  <div class="state_summary">
+
+/Users/jiajin/Desktop/jay/ysc/home/bonli/view/default/tmp/templates_c/f790e2854dfc10cfc7ebdbbb72c3a9e18e210ffc.file.integral.tpl.php:
+   94                                      <div class="integral_top_right_jifen th">平台积分</div>
+   95                                      <div class="integral_top_right_bonli th">相当于积分</div>
+   96:                                     <!-- <div class="integral_top_right_bj th"><span>积分比值</span><span>(E胜网：平台)</span></div> -->
+   97                                  </li>
+   98                                  <?php  $_smarty_tpl->tpl_vars['data'] = new Smarty_Variable;
+
+/Users/jiajin/Desktop/jay/ysc/home/bonli/view/default/tmp/templates_c/fea03667ed7e1f037d7636868d0e7e838d0b7d4a.file.collect.tpl.php:
+  111                          <table>
+  112                              <th>商品名称</th>
+  113:                             <th>E胜网价</th>
+  114                              <th>是否有货</th>
+  115                              <th>操作</th>
+
+119 matches across 67 files
